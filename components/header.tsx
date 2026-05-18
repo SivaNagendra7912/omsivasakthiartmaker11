@@ -40,24 +40,22 @@ export function Header() {
 
   return (
     <>
-      {/* Full Page Hero Header - Before Scroll */}
+      {/* Hero Header Section */}
       <header 
         id="home"
-        className={`min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-secondary to-accent/30 transition-opacity duration-500 ${
-          scrolled ? "opacity-0 pointer-events-none" : "opacity-100"
-        }`}
+        className="relative py-16 md:py-24 lg:py-32 bg-gradient-to-br from-background via-secondary to-accent/30"
       >
         <div className="w-full max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
             {/* Left Side - Circular Logo */}
             <div className="flex-shrink-0">
-              <div className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full bg-gradient-to-br from-primary/20 via-primary/10 to-accent/20 border-2 border-primary/30 flex items-center justify-center shadow-2xl shadow-primary/20">
-                <div className="w-40 h-40 md:w-52 md:h-52 lg:w-64 lg:h-64 rounded-full bg-card border border-border flex items-center justify-center">
+              <div className="w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 rounded-full bg-gradient-to-br from-primary/20 via-primary/10 to-accent/20 border-2 border-primary/30 flex items-center justify-center shadow-2xl shadow-primary/20">
+                <div className="w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 rounded-full bg-card border border-border flex items-center justify-center overflow-hidden">
                   <Image
                     src="/logo.png"
                     alt="SN Art & Crafty Adda Logo"
-                    width={220}
-                    height={220}
+                    width={200}
+                    height={200}
                     className="rounded-full object-cover shadow"
                   />
                 </div>
@@ -66,35 +64,28 @@ export function Header() {
 
             {/* Right Side - Title and Caption */}
             <div className="flex-1 text-center lg:text-left max-w-2xl">
-              <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold text-foreground tracking-wide leading-none">
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-foreground tracking-wide leading-tight">
                 SN_Art&Crafty_Adda
               </h1>
-              <p className="mt-6 md:mt-8 text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed font-light">
+              <p className="mt-4 md:mt-6 text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed font-light">
                 Every handmade creation holds a memory. We craft personalized gifts and creative designs that turn your precious moments into timeless memories.
               </p>
-              <div className="mt-8 md:mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <div className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
                 <a
                   href="#products"
                   onClick={(e) => handleSmoothScroll(e, "#products")}
-                  className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-medium rounded-full hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/30"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded-full hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/30"
                 >
                   Explore Collection
                 </a>
                 <a
                   href="#contact"
                   onClick={(e) => handleSmoothScroll(e, "#contact")}
-                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-primary text-primary font-medium rounded-full hover:bg-primary/10 transition-all duration-300"
+                  className="inline-flex items-center justify-center px-6 py-3 border-2 border-primary text-primary font-medium rounded-full hover:bg-primary/10 transition-all duration-300"
                 >
-                  Reach Us
+                  Contact Us
                 </a>
               </div>
-            </div>
-          </div>
-
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-            <div className="w-6 h-10 border-2 border-muted-foreground/50 rounded-full flex items-start justify-center p-2">
-              <div className="w-1 h-2 bg-muted-foreground/50 rounded-full animate-pulse" />
             </div>
           </div>
         </div>
@@ -156,55 +147,42 @@ export function Header() {
             {/* Mobile Menu Button */}
             <button
               type="button"
-              onClick={() => setMobileMenuOpen(true)}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="md:hidden -m-2.5 p-2.5 text-foreground"
             >
-              <span className="sr-only">Open main menu</span>
-              <Menu className="h-6 w-6" aria-hidden="true" />
+              <span className="sr-only">Toggle menu</span>
+              {mobileMenuOpen ? (
+                <X className="h-6 w-6" aria-hidden="true" />
+              ) : (
+                <Menu className="h-6 w-6" aria-hidden="true" />
+              )}
             </button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden fixed inset-0 z-50">
-            <div 
-              className="fixed inset-0 bg-foreground/20 backdrop-blur-sm" 
-              onClick={() => setMobileMenuOpen(false)} 
-            />
-            <div className="fixed inset-y-0 right-0 w-full max-w-xs bg-background px-6 py-6 shadow-xl border-l border-border">
-              <div className="flex items-center justify-between">
-                <Link href="#home" onClick={() => setMobileMenuOpen(false)}>
-                  <span className="font-serif text-xl font-semibold text-foreground tracking-wide">
-                    SN_Art&Crafty_Adda
-                  </span>
-                </Link>
-                <button
-                  type="button"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="-m-2.5 p-2.5 text-foreground"
+        {/* Mobile Dropdown Menu */}
+        <div 
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out border-t border-border/50 ${
+            mobileMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="bg-background/98 px-6 py-4">
+            <nav className="flex flex-col">
+              {navigation.map((item, index) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={(e) => handleSmoothScroll(e, item.href)}
+                  className="flex items-center justify-between py-3 text-base font-medium text-foreground hover:text-primary transition-colors border-b border-border/30 last:border-b-0"
+                  style={{ transitionDelay: `${index * 50}ms` }}
                 >
-                  <span className="sr-only">Close menu</span>
-                  <X className="h-6 w-6" aria-hidden="true" />
-                </button>
-              </div>
-              <div className="mt-10 flow-root">
-                <div className="space-y-1">
-                  {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      onClick={(e) => handleSmoothScroll(e, item.href)}
-                      className="block rounded-lg px-4 py-3 text-base font-medium text-foreground hover:bg-muted transition-colors"
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
+                  <span className="font-serif">{item.name}</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
+                </a>
+              ))}
+            </nav>
           </div>
-        )}
+        </div>
       </nav>
     </>
   )
