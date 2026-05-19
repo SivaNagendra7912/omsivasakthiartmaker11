@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, Lato } from 'next/font/google'
+import { Cormorant_Garamond, Lato, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
@@ -13,6 +13,12 @@ const lato = Lato({
   subsets: ["latin"],
   weight: ["300", "400", "700"],
   variable: "--font-sans"
+});
+
+const playfair = Playfair_Display({ 
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-display"
 });
 
 export const metadata: Metadata = {
@@ -45,7 +51,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-background">
-      <body className={`${cormorant.variable} ${lato.variable} font-sans antialiased`}>
+      <body className={`${cormorant.variable} ${lato.variable} ${playfair.variable} font-sans antialiased`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
