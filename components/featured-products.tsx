@@ -27,6 +27,13 @@ const products = [
     image: "/products/bangles1.jpeg",
     category: "bangles" as Category,
   },
+  {
+    id: 26,
+    name: "Resin Jewelry Set",
+    description: "Elegant handmade resin jewelry set crafted beautifully with glitter art, earrings, and heart keychain designs",
+    image: "/products/bangles2.jpeg",
+    category: "bangles" as Category,
+  },
 
   // Wedding Crafts
   {

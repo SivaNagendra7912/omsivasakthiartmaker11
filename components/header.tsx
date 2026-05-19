@@ -15,6 +15,7 @@ const navigation = [
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [animationComplete, setAnimationComplete] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +25,15 @@ export function Header() {
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  // Trigger animation after component mounts
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimationComplete(true)
+    }, 100) // Small delay to ensure initial render
+
+    return () => clearTimeout(timer)
   }, [])
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -43,12 +53,18 @@ export function Header() {
       {/* Hero Header Section */}
       <header 
         id="home"
-        className="relative py-16 md:py-24 lg:py-32 bg-gradient-to-br from-background via-secondary to-accent/30"
+        className="relative py-16 md:py-24 lg:py-32 bg-gradient-to-br from-background via-secondary to-accent/30 overflow-hidden"
       >
-        <div className="w-full max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="w-full max-w-7xl mx-auto px-8 md:px-12 lg:px-16">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
-            {/* Left Side - Circular Logo */}
-            <div className="flex-shrink-0">
+            {/* Left Side - Circular Logo with Animation */}
+            <div 
+              className={`flex-shrink-0 transition-all duration-1000 ease-out ${
+                animationComplete 
+                  ? "translate-x-0 lg:translate-x-0" 
+                  : "translate-x-[calc(50vw-50%)] lg:translate-x-[calc(50vw-200px)]"
+              }`}
+            >
               <div className="w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 rounded-full bg-gradient-to-br from-primary/20 via-primary/10 to-accent/20 border-2 border-primary/30 flex items-center justify-center shadow-2xl shadow-primary/20">
                 <div className="w-32 h-32 md:w-44 md:h-44 lg:w-56 lg:h-56 rounded-full bg-card border border-border flex items-center justify-center overflow-hidden">
                   <Image
@@ -62,8 +78,24 @@ export function Header() {
               </div>
             </div>
 
-            {/* Right Side - Title and Caption */}
-            <div className="flex-1 text-center lg:text-left max-w-2xl">
+            {/* Right Side - Title and Caption with Animation */}
+            <div 
+              className={`flex-1 text-center lg:text-left max-w-2xl transition-all duration-1000 ease-out delay-500 ${
+                animationComplete 
+                  ? "opacity-100 translate-x-0" 
+                  : "opacity-0 translate-x-10"
+              }`}
+            >
+              {/* Welcome Text with Script Font */}
+              <p 
+                className={`text-3xl md:text-4xl lg:text-5xl text-primary mb-3 transition-all duration-700 delay-700 ${
+                  animationComplete ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
+                }`}
+                style={{ fontFamily: 'var(--font-script)' }}
+              >
+                Welcome to
+              </p>
+              
               <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-foreground tracking-wide leading-tight">
                 SN_Art&Crafty_Adda
               </h1>
@@ -99,7 +131,7 @@ export function Header() {
             : "-translate-y-full opacity-0"
         }`}
       >
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-8 md:px-12 lg:px-16">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Small Logo on Left */}
             <Link href="/" className="flex items-center gap-3">
@@ -166,7 +198,7 @@ export function Header() {
             mobileMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="bg-background/98 px-6 py-4">
+          <div className="bg-background/98 px-8 py-4">
             <nav className="flex flex-col">
               {navigation.map((item, index) => (
                 <a
