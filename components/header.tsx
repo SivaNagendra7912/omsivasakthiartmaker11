@@ -86,14 +86,14 @@ export function Header() {
                   : "opacity-0 translate-x-10"
               }`}
             >
-              {/* Welcome Text with Decorative Font */}
+              {/* Welcome Text with Script Font */}
               <p 
-                className={`font-[var(--font-display)] italic text-xl md:text-2xl lg:text-3xl text-primary mb-2 transition-all duration-700 delay-700 ${
+                className={`text-3xl md:text-4xl lg:text-5xl text-primary mb-3 transition-all duration-700 delay-700 ${
                   animationComplete ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
                 }`}
-                style={{ fontFamily: 'var(--font-display)' }}
+                style={{ fontFamily: 'var(--font-script)' }}
               >
-                ✨ Welcome to ✨
+                Welcome to
               </p>
               
               <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-foreground tracking-wide leading-tight">
