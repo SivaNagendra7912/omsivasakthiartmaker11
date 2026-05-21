@@ -37,12 +37,12 @@ const products = [
 
   // Wedding Crafts
   {
-    id: 2,
-    name: "Wedding Coconut Art",
-    description: "Traditional handcrafted wedding coconut decorated elegantly with artistic pearl details",
-    image: "/products/wedding1.jpeg",
-    category: "wedding" as Category,
-  },
+  id: 2,
+  name: "Traditional Wedding Decoration",
+  description: "Elegant handcrafted wedding decoration designed with traditional artistic detailing and pearl accents",
+  image: "/products/wedding1.jpeg",
+  category: "wedding" as Category,
+},
   {
     id: 3,
     name: "Wedding Memory Frame",
