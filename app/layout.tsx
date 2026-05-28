@@ -22,9 +22,52 @@ const greatVibes = Great_Vibes({
 });
 
 export const metadata: Metadata = {
-  title: 'SN_Art&Crafty_Adda | Handcrafted with Love',
-  description: 'Discover unique handmade crafts created by skilled artisans. Each piece tells a story of passion, tradition, and exceptional craftsmanship.',
-  generator: 'v0.app',
+  title: "SN Art & Crafty Adda | Customized Handmade Gifts & Resin Art",
+
+  description:
+    "SN Art & Crafty Adda offers personalized handmade gifts, resin art, custom name plates, photo frames, birthday gifts, anniversary gifts, and creative craft products online.",
+
+  keywords: [
+    "SN Art & Crafty Adda",
+    "omsivasakthiartmaker",
+    "omsivasakthiartmaker11",
+    "handmade gifts",
+    "customized gifts",
+    "personalized gifts",
+    "resin art",
+    "resin name boards",
+    "birthday gifts",
+    "anniversary gifts",
+    "couple gifts",
+    "photo frames",
+    "handmade crafts",
+    "gift store",
+    "custom gift shop",
+    "Instagram gift shop",
+    "handmade decorations",
+    "creative gifts",
+    "gift items online",
+    "custom name plates",
+    "resin keychains",
+    "home decor gifts",
+    "wedding gifts",
+    "surprise gifts",
+    "best handmade gifts",
+    "art and crafts",
+    "crafty adda",
+    "small business gifts",
+    "custom resin products",
+    "festival gifts",
+    "DIY crafts",
+    "aesthetic gifts",
+    "cute handmade gifts",
+    "gift ideas",
+    "Indian handmade gifts",
+    "Telugu handmade crafts",
+    "customized art products",
+  ],
+
+  authors: [{ name: "SN Art & Crafty Adda" }],
 
   icons: {
     icon: "/logo.ico",
