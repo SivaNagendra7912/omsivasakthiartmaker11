@@ -27,6 +27,10 @@ export const metadata: Metadata = {
   description:
     "SN Art & Crafty Adda offers personalized handmade gifts, resin art, custom name plates, photo frames, birthday gifts, anniversary gifts, and creative craft products online.",
 
+  verification: {
+    google: "pdIgEihvq3vZSeZcaRx6htFWKJcDYsot0Lq2unKOMWE",
+  },
+
   keywords: [
     "SN Art & Crafty Adda",
     "omsivasakthiartmaker",
