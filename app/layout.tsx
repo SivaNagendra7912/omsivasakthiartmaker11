@@ -109,10 +109,13 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: "/logo.ico",
-    shortcut: "/logo.ico",
-    apple: "/logo.ico",
-  },
+      icon: [
+        { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+        { url: "/logo.png", sizes: "512x512", type: "image/png" },
+      ],
+      shortcut: "/favicon.ico",
+      apple: "/apple-touch-icon.png",
+    },
 };
 
 export default function RootLayout({
@@ -121,18 +124,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "SN Art & Crafty Adda",
-    url: "https://www.omsivasakthiartmaker11.in",
-    logo: "https://www.omsivasakthiartmaker11.in/logo.png",
-    image: "https://www.omsivasakthiartmaker11.in/logo.png",
-    description:
-      "Customized handmade gifts, resin art, photo frames, wedding gifts, birthday gifts and personalized crafts.",
-    sameAs: [
-      "https://www.instagram.com/omsivasakthiartmaker11",
-    ],
-  };
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "SN Art & Crafty Adda",
+  url: "https://www.omsivasakthiartmaker11.in",
+  logo: "https://www.omsivasakthiartmaker11.in/logo.png",
+  image: "https://www.omsivasakthiartmaker11.in/logo.png",
+  description:
+    "Customized handmade gifts, resin art, photo frames, wedding gifts, birthday gifts and personalized crafts.",
+  sameAs: [
+    "https://www.instagram.com/omsivasakthiartmaker11",
+  ],
+};
 
   return (
     <html lang="en" className="bg-background">
