@@ -96,8 +96,8 @@ export function Header() {
                 Welcome to
               </p>
               
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-foreground tracking-wide leading-tight">
-                SN Art & Crafty Adda – Handmade Gifts, Resin Art & Personalized Crafts
+              <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground tracking-wide leading-tight">
+                SN Art & Crafty Adda – Customized Handmade Gifts & Resin Art
               </h1>
               <p className="mt-4 md:mt-6 text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed font-light">
                 Handmade resin art, customized gifts, photo frames, wedding gifts, birthday gifts and personalized crafts made with love.
