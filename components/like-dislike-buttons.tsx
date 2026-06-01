@@ -64,10 +64,13 @@ export function LikeDislikeButtons({
 
   const formatCount = (count: number) => {
     if (count >= 1000000) {
-      return (count / 1000000).toFixed(1) + 'M'
+      const value = count / 1000000
+      return value % 1 === 0 ? value.toFixed(0) + 'm' : value.toFixed(1) + 'm'
     }
     if (count >= 1000) {
-      return (count / 1000).toFixed(1) + 'K'
+      const value = count / 1000
+      // Show "1k" for 1000, "1.1k" for 1100, "1.2k" for 1200, etc.
+      return value % 1 === 0 ? value.toFixed(0) + 'k' : value.toFixed(1) + 'k'
     }
     return count.toString()
   }
