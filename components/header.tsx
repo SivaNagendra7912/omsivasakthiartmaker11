@@ -97,10 +97,10 @@ export function Header() {
               </p>
               
               <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-foreground tracking-wide leading-tight">
-                SN_Art&Crafty_Adda
+                SN Art & Crafty Adda – Handmade Gifts, Resin Art & Personalized Crafts
               </h1>
               <p className="mt-4 md:mt-6 text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed font-light">
-                Every handmade creation holds a memory. We craft personalized gifts and creative designs that turn your precious moments into timeless memories.
+                Handmade resin art, customized gifts, photo frames, wedding gifts, birthday gifts and personalized crafts made with love.
               </p>
               <div className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
                 <a
