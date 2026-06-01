@@ -1,7 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { ChevronDown, X } from "lucide-react"
+import { LikeDislikeButtons } from "./like-dislike-buttons"
 
 type Category = "all" | "bangles" | "wedding" | "couple" | "rakhis" | "clocks" | "calendars" | "baby" | "birthday" | "others"
 
@@ -231,6 +232,82 @@ export function FeaturedProducts() {
   const [selectedCategory, setSelectedCategory] = useState<Category>("all")
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null)
+  const [voteCounts, setVoteCounts] = useState<Record<number, { likes: number; dislikes: number }>>({})
+  const [userVotes, setUserVotes] = useState<Record<number, 'like' | 'dislike'>>({})
+  const [deviceId, setDeviceId] = useState<string>("")
+
+  // Generate or retrieve device ID for tracking votes
+  useEffect(() => {
+    let storedDeviceId = localStorage.getItem('device_vote_id')
+    if (!storedDeviceId) {
+      storedDeviceId = 'device_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now()
+      localStorage.setItem('device_vote_id', storedDeviceId)
+    }
+    setDeviceId(storedDeviceId)
+  }, [])
+
+  // Fetch initial vote counts and user's votes
+  useEffect(() => {
+    const fetchVoteData = async () => {
+      try {
+        // Fetch all vote counts
+        const countsRes = await fetch('/api/votes')
+        if (countsRes.ok) {
+          const counts = await countsRes.json()
+          setVoteCounts(counts)
+        }
+
+        // Fetch user's votes if we have a device ID
+        if (deviceId) {
+          const userVotesRes = await fetch(`/api/votes/user?deviceId=${deviceId}`)
+          if (userVotesRes.ok) {
+            const votes = await userVotesRes.json()
+            setUserVotes(votes)
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching vote data:', error)
+      }
+    }
+
+    fetchVoteData()
+  }, [deviceId])
+
+  const handleVote = useCallback(async (productId: number, voteType: 'like' | 'dislike') => {
+    const res = await fetch('/api/votes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ productId, deviceId, voteType }),
+    })
+
+    if (!res.ok) {
+      throw new Error('Vote failed')
+    }
+
+    const data = await res.json()
+    
+    // Update local state
+    setVoteCounts(prev => ({
+      ...prev,
+      [productId]: { likes: data.likes, dislikes: data.dislikes }
+    }))
+
+    if (data.userVote) {
+      setUserVotes(prev => ({ ...prev, [productId]: data.userVote }))
+    } else {
+      setUserVotes(prev => {
+        const newVotes = { ...prev }
+        delete newVotes[productId]
+        return newVotes
+      })
+    }
+
+    return {
+      likes: data.likes,
+      dislikes: data.dislikes,
+      userVote: data.userVote,
+    }
+  }, [deviceId])
 
   const filteredProducts = selectedCategory === "all" 
     ? products 
@@ -331,9 +408,19 @@ export function FeaturedProducts() {
                 <h3 className="font-serif text-lg sm:text-xl font-semibold text-foreground mb-1 sm:mb-2">
                   {product.name}
                 </h3>
-                <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">
+                <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2 mb-3">
                   {product.description}
                 </p>
+                
+                {/* Like/Dislike Buttons */}
+                <LikeDislikeButtons
+                  productId={product.id}
+                  initialLikes={voteCounts[product.id]?.likes || 0}
+                  initialDislikes={voteCounts[product.id]?.dislikes || 0}
+                  deviceId={deviceId}
+                  userVote={userVotes[product.id] || null}
+                  onVote={handleVote}
+                />
               </div>
             </div>
           ))}
