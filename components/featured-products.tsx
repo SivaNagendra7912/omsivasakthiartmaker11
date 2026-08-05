@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 import { ChevronDown, X } from "lucide-react"
 import { LikeDislikeButtons } from "./like-dislike-buttons"
 
@@ -27,6 +27,7 @@ const products = [
     description: "Elegant handmade resin bangles crafted beautifully with floral artistic designs",
     image: "/products/bangles1.jpeg",
     category: "bangles" as Category,
+    size: "Inner diameter ~2.4 in",
   },
   {
     id: 26,
@@ -34,6 +35,7 @@ const products = [
     description: "Elegant handmade resin jewelry set crafted beautifully with glitter art, earrings, and heart keychain designs",
     image: "/products/bangles2.jpeg",
     category: "bangles" as Category,
+    size: "Earrings ~ 1.2 in, Pendant ~ 1.5 in",
   },
 
   // Wedding Crafts
@@ -43,6 +45,7 @@ const products = [
   description: "Elegant handcrafted wedding decoration designed with traditional artistic detailing and pearl accents",
   image: "/products/wedding1.jpeg",
   category: "wedding" as Category,
+  size: "Rectangular ~ 12 x 8 in",
 },
   {
     id: 3,
@@ -50,6 +53,7 @@ const products = [
     description: "Elegant handmade wedding frame crafted beautifully with memorable couple moments",
     image: "/products/wedding2.jpeg",
     category: "wedding" as Category,
+    size: "Rectangular ~ 8 x 8 in",
   },
   {
     id: 4,
@@ -57,6 +61,7 @@ const products = [
     description: "Handmade wedding collage frame preserving beautiful ceremonies and memorable couple moments",
     image: "/products/wedding3.jpeg",
     category: "wedding" as Category,
+    size: "Rectangular ~ 18 x 16 in",
   },
   {
     id: 21,
@@ -64,6 +69,7 @@ const products = [
     description: "Traditional handmade wedding coconut crafted with heart-shaped designs, pearls, and elegant decorative artwork",
     image: "/products/coconut.jpeg",
     category: "wedding" as Category,
+    size: "Varies",
   },
 
   // Couple & Love Frames
@@ -73,6 +79,7 @@ const products = [
     description: "Customized resin couple frame designed artistically with flowers and beautiful memories",
     image: "/products/couple1.jpeg",
     category: "couple" as Category,
+    size: "Rectangular ~ 16 x 14 in",
   },
   {
     id: 6,
@@ -80,6 +87,7 @@ const products = [
     description: "Customized handmade love frame crafted beautifully with photos and artistic decorations",
     image: "/products/coupl2.jpeg",
     category: "couple" as Category,
+    size: "Circular ~ 8 in Diameter",
   },
   {
     id: 7,
@@ -87,6 +95,7 @@ const products = [
     description: "Customized handmade frame preserving beautiful memories with creative artistic personalized designs",
     image: "/products/couple3.jpeg",
     category: "couple" as Category,
+    size: "Rectangular ~ 10 x 8 in",
   },
   {
     id: 8,
@@ -94,6 +103,7 @@ const products = [
     description: "Customized handmade quote frame expressing emotions, memories, love, and relationships",
     image: "/products/couple4.jpeg",
     category: "couple" as Category,
+    size: "Rectangular ~ 10 x 8 in",
   },
 
   // Rakhis
@@ -103,6 +113,7 @@ const products = [
     description: "Handmade colorful rakhis crafted beautifully with names, beads, and love",
     image: "/products/rakhi1.jpeg",
     category: "rakhis" as Category,
+    size: "Depends on design",
   },
   {
     id: 10,
@@ -110,6 +121,7 @@ const products = [
     description: "Handmade designer rakhis crafted beautifully with colorful beads and personalized names",
     image: "/products/rakhi2.jpeg",
     category: "rakhis" as Category,
+    size: "Depends on design",
   },
 
   // Clocks
@@ -119,6 +131,7 @@ const products = [
     description: "Elegant customized clock crafted beautifully with couple memories and floral designs",
     image: "/products/clock2.jpeg",
     category: "clocks" as Category,
+    size: "Circular ~ 10 in Diameter",
   },
   {
     id: 12,
@@ -126,6 +139,7 @@ const products = [
     description: "Beautiful handmade clock designed with personalized photo memories and elegant resin art patterns",
     image: "/products/clock1.jpeg",
     category: "clocks" as Category,
+    size: "Circular ~ 10 in Diameter",
   },
 
   {
@@ -134,6 +148,7 @@ const products = [
     description: "Romantic heart-shaped couple clock crafted with custom names, memories, and artistic floral resin work",
     image: "/products/clock3.jpeg",
     category: "clocks" as Category,
+    size: "Circular ~ 8 in Diameter",
   },
 
   // Calendar Frames
@@ -143,6 +158,7 @@ const products = [
     description: "Personalized handmade calendar beautifully designed with memorable photos and special dates",
     image: "/products/calender1.jpeg",
     category: "calendars" as Category,
+    size: "Circular ~ 8 in Diameter",
   },
   {
     id: 15,
@@ -150,6 +166,7 @@ const products = [
     description: "Customized birthday calendar frame preserving precious memories with elegant handmade designs",
     image: "/products/calender2.jpeg",
     category: "calendars" as Category,
+    size: "Circular ~ 8 in Diameter",
   },
 
   // Baby Frames
@@ -159,6 +176,7 @@ const products = [
     description: "Customized handmade baby board preserving precious birth memories and special moments",
     image: "/products/baby1.jpeg",
     category: "baby" as Category,
+    size: "Rectangular ~ 16 x 14 in",
   },
   // Birthday Gifts
   {
@@ -167,6 +185,7 @@ const products = [
     description: "Customized handmade birthday frame crafted beautifully with memorable photos and decorative designs",
     image: "/products/birthday1.jpeg",
     category: "birthday" as Category,
+    size: "Rectangular ~ 8 x 6 in",
   },
 
   {
@@ -175,6 +194,7 @@ const products = [
     description: "Elegant personalized birthday resin board designed with names, wishes, and artistic decorations",
     image: "/products/birthday2.jpeg",
     category: "birthday" as Category,
+    size: "Circular ~ 8 in Diameter",
   },
 
   {
@@ -183,6 +203,7 @@ const products = [
     description: "Creative birthday photo clock customized with special memories and stylish floral artwork",
     image: "/products/birthday3.jpeg",
     category: "birthday" as Category,
+    size: "Circular ~ 8 in Diameter",
   },
 
   {
@@ -191,38 +212,43 @@ const products = [
     description: "Handmade birthday name plate designed with glitter resin art and customized celebration themes",
     image: "/products/birthday4.jpeg",
     category: "birthday" as Category,
+    size: "Circular ~ 10 in Diameter",
   },
   // Others
-{
+  {
     id: 22,
     name: "Resin Decorative Plate",
     description: "Handmade decorative resin plate crafted beautifully with pearls, stones, and elegant artistic designs",
     image: "/products/design.jpeg",
     category: "others" as Category,
+    size: "Circular ~ 8 in Diameter",
   },
 
-{
+  {
     id: 23,
     name: "Customized Resin Ring",
     description: "Personalized resin ring designed creatively with initials, colorful art, and elegant finishing",
     image: "/products/nails.jpeg",
     category: "others" as Category,
+    size: "Varies",
   },
 
-{
+  {
     id: 24,
     name: "Designer Mobile Cover",
     description: "Stylish handmade mobile cover decorated with pearls, crystals, and luxury artistic patterns",
     image: "/products/phonepouch.jpeg",
     category: "others" as Category,
+    size: "Depends on phone model",
   },
 
-{
+  {
     id: 25,
     name: "Customized Resin Name Board",
     description: "Elegant personalized resin name board designed beautifully with seashells and artistic decorations",
     image: "/products/shopname.jpeg",
     category: "others" as Category,
+    size: "Circular ~ 8 in Diameter",
   },
 
 
@@ -235,6 +261,26 @@ export function FeaturedProducts() {
   const [voteCounts, setVoteCounts] = useState<Record<number, { likes: number; dislikes: number }>>({})
   const [userVotes, setUserVotes] = useState<Record<number, 'like' | 'dislike'>>({})
   const [deviceId, setDeviceId] = useState<string>("")
+  const productsRef = useRef<HTMLDivElement | null>(null)
+  const stickyRef = useRef<HTMLDivElement | null>(null)
+
+  const scrollToProducts = () => {
+    const grid = productsRef.current
+    const sticky = stickyRef.current
+    if (!grid) return
+
+    // Wait for layout to settle (after React updates) using two rAFs
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const firstCard = grid.querySelector('[data-product-id]') as HTMLElement | null
+        const targetEl = firstCard || grid
+        const targetTop = targetEl.getBoundingClientRect().top + window.scrollY
+        const stickyHeight = sticky ? sticky.getBoundingClientRect().height : 0
+        const gap = 24 // gap so cards are visible under the filter
+        window.scrollTo({ top: Math.max(0, targetTop - stickyHeight - gap), behavior: 'smooth' })
+      })
+    })
+  }
 
   // Generate or retrieve device ID for tracking votes
   useEffect(() => {
@@ -332,44 +378,44 @@ export function FeaturedProducts() {
           </p>
         </div>
 
-        {/* Category Filter Dropdown */}
-        <div className="flex justify-center mb-8 sm:mb-10">
-          <div className="relative">
-            <button
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="flex items-center gap-3 px-6 py-3 bg-background border border-border rounded-full shadow-sm hover:shadow-md transition-all duration-200 min-w-[200px] justify-between"
-            >
-              <span className="font-medium text-foreground">{selectedLabel}</span>
-              <ChevronDown className={`h-4 w-4 text-muted-foreground transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`} />
-            </button>
+        {/* Category Filter Dropdown (sticky below navbar) */}
+        <div ref={stickyRef} className="sticky top-16 z-30 bg-background/95 py-4 sm:py-6">
+          <div className="flex justify-center">
+            <div className="relative w-full max-w-[720px] flex justify-center mx-auto">
+              <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="flex items-center gap-3 px-6 py-3 bg-background border border-border rounded-full shadow-sm hover:shadow-md transition-all duration-200 min-w-[200px] justify-between mx-auto"
+              >
+                <span className="font-medium text-foreground">{selectedLabel}</span>
+                <ChevronDown className={`h-4 w-4 text-muted-foreground transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`} />
+              </button>
 
-            {/* Dropdown Menu */}
-            {dropdownOpen && (
-              <>
-                <div 
-                  className="fixed inset-0 z-10" 
-                  onClick={() => setDropdownOpen(false)} 
-                />
-                <div className="absolute top-full left-0 right-0 mt-2 bg-background border border-border rounded-2xl shadow-xl z-20 overflow-hidden">
-                  {categories.map((category) => (
-                    <button
-                      key={category.value}
-                      onClick={() => {
-                        setSelectedCategory(category.value)
-                        setDropdownOpen(false)
-                      }}
-                      className={`w-full px-5 py-3 text-left font-medium transition-colors ${
-                        selectedCategory === category.value
-                          ? "bg-primary/10 text-primary"
-                          : "text-foreground hover:bg-muted"
-                      }`}
-                    >
-                      {category.label}
-                    </button>
-                  ))}
-                </div>
-              </>
-            )}
+              {dropdownOpen && (
+                <>
+                  <div className="fixed inset-0 z-10" onClick={() => setDropdownOpen(false)} />
+                  <div className="absolute top-full left-0 right-0 mt-2 bg-background border border-border rounded-2xl shadow-xl z-20 overflow-hidden">
+                    {categories.map((category) => (
+                      <button
+                        key={category.value}
+                        onClick={() => {
+                          setSelectedCategory(category.value)
+                          setDropdownOpen(false)
+                          // smooth scroll so product cards begin below the sticky filter
+                          setTimeout(() => scrollToProducts(), 60)
+                        }}
+                        className={`w-full px-5 py-3 text-left font-medium transition-colors ${
+                          selectedCategory === category.value
+                            ? "bg-primary/10 text-primary"
+                            : "text-foreground hover:bg-muted"
+                        }`}
+                      >
+                        {category.label}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         </div>
 
@@ -379,10 +425,11 @@ export function FeaturedProducts() {
         </p>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        <div ref={productsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {filteredProducts.map((product) => (
             <div 
-              key={product.id} 
+              key={product.id}
+              data-product-id={product.id}
               className="group bg-background rounded-xl sm:rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300"
             >
               {/* Product Image - Clickable for Lightbox */}
@@ -408,9 +455,15 @@ export function FeaturedProducts() {
                 <h3 className="font-serif text-lg sm:text-xl font-semibold text-foreground mb-1 sm:mb-2">
                   {product.name}
                 </h3>
-                <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2 mb-3">
+                <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2 mb-2">
                   {product.description}
                 </p>
+                {product.size && (
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-3 mb-3">
+                    <span className="font-medium mr-1">Size:</span>
+                    {product.size}
+                  </p>
+                )}
                 
                 {/* Like/Dislike Buttons */}
                 <LikeDislikeButtons
@@ -443,15 +496,15 @@ export function FeaturedProducts() {
 
           {/* Full Image */}
           <img
-            src={lightboxImage.src}
-            alt={lightboxImage.alt}
+            src={lightboxImage?.src}
+            alt={lightboxImage?.alt}
             className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           />
 
           {/* Image Title */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/50 px-6 py-3 rounded-full">
-            <p className="text-white font-serif text-lg">{lightboxImage.alt}</p>
+            <p className="text-white font-serif text-lg">{lightboxImage?.alt}</p>
           </div>
         </div>
       )}

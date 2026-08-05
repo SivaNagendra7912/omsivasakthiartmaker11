@@ -5,6 +5,10 @@ import { NextRequest, NextResponse } from 'next/server'
 export async function GET() {
   try {
     const sql = getDb()
+    if (!sql) {
+      // Database not configured — return empty counts to avoid errors in UI
+      return NextResponse.json({})
+    }
     const result = await sql`
       SELECT product_id, likes, dislikes FROM product_vote_counts ORDER BY product_id
     `
@@ -28,6 +32,9 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const sql = getDb()
+    if (!sql) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 503 })
+    }
     const { productId, deviceId, voteType } = await request.json()
     
     if (!productId || !deviceId || !['like', 'dislike'].includes(voteType)) {

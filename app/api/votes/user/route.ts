@@ -5,6 +5,10 @@ import { NextRequest, NextResponse } from 'next/server'
 export async function GET(request: NextRequest) {
   try {
     const sql = getDb()
+    if (!sql) {
+      // Database not configured — return empty user votes
+      return NextResponse.json({})
+    }
     const deviceId = request.nextUrl.searchParams.get('deviceId')
     
     if (!deviceId) {
