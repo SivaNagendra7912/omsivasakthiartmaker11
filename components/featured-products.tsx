@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react"
 import { ChevronDown, X } from "lucide-react"
 import { LikeDislikeButtons } from "./like-dislike-buttons"
 
-type Category = "all" | "bangles" | "wedding" | "couple" | "rakhis" | "clocks" | "calendars" | "baby" | "birthday" | "others"
+type Category = "all" | "bangles" | "wedding" | "couple" | "rakhis" | "clocks" | "calendars" | "baby" | "birthday" | "others" | "earrings" | "keychains"
 
 const categories: { value: Category; label: string }[] = [
   { value: "all", label: "All Products" },
@@ -16,6 +16,8 @@ const categories: { value: Category; label: string }[] = [
   { value: "calendars", label: "Calendars" },
   { value: "baby", label: "Baby Frames" },
   { value: "birthday", label: "Birthday Gifts" },
+  { value: "earrings", label: "Earrings" },
+  { value: "keychains", label: "Keychains" },
   { value: "others", label: "Others" },
 ]
 
@@ -27,7 +29,7 @@ const products = [
     description: "Elegant handmade resin bangles crafted beautifully with floral artistic designs",
     image: "/products/bangles1.jpeg",
     category: "bangles" as Category,
-    size: "Inner diameter ~2.4 in",
+    size: "Inner diameter ~2.2 in - 2.8 in",
   },
   {
     id: 26,
@@ -45,7 +47,7 @@ const products = [
   description: "Elegant handcrafted wedding decoration designed with traditional artistic detailing and pearl accents",
   image: "/products/wedding1.jpeg",
   category: "wedding" as Category,
-  size: "Rectangular ~ 12 x 8 in",
+  size: "Rectangular ~ 18 x 24 in",
 },
   {
     id: 3,
@@ -53,7 +55,7 @@ const products = [
     description: "Elegant handmade wedding frame crafted beautifully with memorable couple moments",
     image: "/products/wedding2.jpeg",
     category: "wedding" as Category,
-    size: "Rectangular ~ 8 x 8 in",
+    size: "Rectangular ~ 14 x 14 in",
   },
   {
     id: 4,
@@ -61,7 +63,7 @@ const products = [
     description: "Handmade wedding collage frame preserving beautiful ceremonies and memorable couple moments",
     image: "/products/wedding3.jpeg",
     category: "wedding" as Category,
-    size: "Rectangular ~ 18 x 16 in",
+    size: "Rectangular ~ 14 x 16 in",
   },
   {
     id: 21,
@@ -79,7 +81,7 @@ const products = [
     description: "Customized resin couple frame designed artistically with flowers and beautiful memories",
     image: "/products/couple1.jpeg",
     category: "couple" as Category,
-    size: "Rectangular ~ 16 x 14 in",
+    size: "Rectangular ~ 10 x 12 in",
   },
   {
     id: 6,
@@ -87,7 +89,7 @@ const products = [
     description: "Customized handmade love frame crafted beautifully with photos and artistic decorations",
     image: "/products/coupl2.jpeg",
     category: "couple" as Category,
-    size: "Circular ~ 8 in Diameter",
+    size: "Circular ~ 10 in Diameter",
   },
   {
     id: 7,
@@ -95,7 +97,7 @@ const products = [
     description: "Customized handmade frame preserving beautiful memories with creative artistic personalized designs",
     image: "/products/couple3.jpeg",
     category: "couple" as Category,
-    size: "Rectangular ~ 10 x 8 in",
+    size: "Rectangular ~ 9 x 12 in",
   },
   {
     id: 8,
@@ -103,7 +105,7 @@ const products = [
     description: "Customized handmade quote frame expressing emotions, memories, love, and relationships",
     image: "/products/couple4.jpeg",
     category: "couple" as Category,
-    size: "Rectangular ~ 10 x 8 in",
+    size: "Rectangular ~ 9 x 12 in",
   },
 
   // Rakhis
@@ -131,7 +133,7 @@ const products = [
     description: "Elegant customized clock crafted beautifully with couple memories and floral designs",
     image: "/products/clock2.jpeg",
     category: "clocks" as Category,
-    size: "Circular ~ 10 in Diameter",
+    size: "Circular ~ 12 in Diameter",
   },
   {
     id: 12,
@@ -144,10 +146,10 @@ const products = [
 
   {
     id: 13,
-    name: "Heart Couple Clock",
-    description: "Romantic heart-shaped couple clock crafted with custom names, memories, and artistic floral resin work",
+    name: "New Born Baby Memory plate",
+    description: "Customized handmade baby memory plate preserving precious birth memories and special moments",
     image: "/products/clock3.jpeg",
-    category: "clocks" as Category,
+    category: "baby" as Category,
     size: "Circular ~ 8 in Diameter",
   },
 
@@ -176,7 +178,7 @@ const products = [
     description: "Customized handmade baby board preserving precious birth memories and special moments",
     image: "/products/baby1.jpeg",
     category: "baby" as Category,
-    size: "Rectangular ~ 16 x 14 in",
+    size: "Rectangular ~ 10 x 12 in",
   },
   // Birthday Gifts
   {
@@ -185,7 +187,7 @@ const products = [
     description: "Customized handmade birthday frame crafted beautifully with memorable photos and decorative designs",
     image: "/products/birthday1.jpeg",
     category: "birthday" as Category,
-    size: "Rectangular ~ 8 x 6 in",
+    size: "Rectangular ~ 9 x 12 in",
   },
 
   {
@@ -221,7 +223,7 @@ const products = [
     description: "Handmade decorative resin plate crafted beautifully with pearls, stones, and elegant artistic designs",
     image: "/products/design.jpeg",
     category: "others" as Category,
-    size: "Circular ~ 8 in Diameter",
+    size: "Circular ~ 6 in Diameter",
   },
 
   {
@@ -230,7 +232,7 @@ const products = [
     description: "Personalized resin ring designed creatively with initials, colorful art, and elegant finishing",
     image: "/products/nails.jpeg",
     category: "others" as Category,
-    size: "Varies",
+    size: "Depends on finger size",
   },
 
   {
@@ -248,9 +250,53 @@ const products = [
     description: "Elegant personalized resin name board designed beautifully with seashells and artistic decorations",
     image: "/products/shopname.jpeg",
     category: "others" as Category,
-    size: "Circular ~ 8 in Diameter",
+    size: "Circular ~ 4 in Diameter",
   },
 
+  {
+  id: 29,
+  name: "Premium Wedding Memory Frame",
+  description: "Luxury handmade wedding memory frame featuring invitation card, photos, names, and elegant resin artwork",
+  image: "/products/marriage6.jpeg",
+  category: "wedding" as Category,
+  size: "Rectangular ~ 14 x 26 in",
+},
+{
+  id: 30,
+  name: "Customized Wedding Resin Frame",
+  description: "Personalized wedding resin frame crafted with invitation card, memorable photos, pearls, and premium decorations",
+  image: "/products/marriage7.jpeg",
+  category: "wedding" as Category,
+  size: "Rectangular ~ 10 x 14 in",
+},
+
+  // Earrings
+{
+  id: 31,
+  name: "Resin Earrings",
+  description: "Elegant handmade resin earrings crafted beautifully with glitter art and premium artistic designs",
+  image: "/products/earrings.jpeg",
+  category: "earrings" as Category,
+  size: "Depends on design",
+},
+
+// Keychains
+{
+  id: 32,
+  name: "Heart Resin Keychain",
+  description: "Handmade heart-shaped resin keychain crafted with colorful glitter and premium finish",
+  image: "/products/keychains1.jpeg",
+  category: "keychains" as Category,
+  size: "Depends on design",
+},
+{
+  id: 33,
+  name: "Customized Doll Keychain",
+  description: "Personalized handmade doll keychain with resin initial, name, and soft pom-pom decoration",
+  image: "/products/keychains2.jpeg",
+  category: "keychains" as Category,
+  size: "Depends on design",
+},
 
 ]
 
@@ -393,7 +439,7 @@ export function FeaturedProducts() {
               {dropdownOpen && (
                 <>
                   <div className="fixed inset-0 z-10" onClick={() => setDropdownOpen(false)} />
-                  <div className="absolute top-full left-0 right-0 mt-2 bg-background border border-border rounded-2xl shadow-xl z-20 overflow-hidden">
+                  <div className="absolute top-full left-0 right-0 mt-2 bg-background border border-border rounded-2xl shadow-xl z-20 max-h-[320px] overflow-y-auto">
                     {categories.map((category) => (
                       <button
                         key={category.value}
