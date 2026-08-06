@@ -29,7 +29,7 @@ const products = [
     description: "Elegant handmade resin bangles crafted beautifully with floral artistic designs",
     image: "/products/bangles1.jpeg",
     category: "bangles" as Category,
-    size: "Inner diameter ~2.2 in - 2.8 in",
+    size: "2.2 inches",
   },
   {
     id: 26,
@@ -37,7 +37,7 @@ const products = [
     description: "Elegant handmade resin jewelry set crafted beautifully with glitter art, earrings, and heart keychain designs",
     image: "/products/bangles2.jpeg",
     category: "bangles" as Category,
-    size: "Earrings ~ 1.2 in, Pendant ~ 1.5 in",
+    size: "1.2 inches",
   },
 
   // Wedding Crafts
@@ -47,7 +47,7 @@ const products = [
   description: "Elegant handcrafted wedding decoration designed with traditional artistic detailing and pearl accents",
   image: "/products/wedding1.jpeg",
   category: "wedding" as Category,
-  size: "Rectangular ~ 18 x 24 in",
+  size: "18 x 24 inches",
 },
   {
     id: 3,
@@ -55,7 +55,7 @@ const products = [
     description: "Elegant handmade wedding frame crafted beautifully with memorable couple moments",
     image: "/products/wedding2.jpeg",
     category: "wedding" as Category,
-    size: "Rectangular ~ 14 x 14 in",
+    size: "14 x 14 inches",
   },
   {
     id: 4,
@@ -63,7 +63,7 @@ const products = [
     description: "Handmade wedding collage frame preserving beautiful ceremonies and memorable couple moments",
     image: "/products/wedding3.jpeg",
     category: "wedding" as Category,
-    size: "Rectangular ~ 14 x 16 in",
+    size: "14 x 16 inches",
   },
   {
     id: 21,
@@ -81,7 +81,7 @@ const products = [
     description: "Customized resin couple frame designed artistically with flowers and beautiful memories",
     image: "/products/couple1.jpeg",
     category: "couple" as Category,
-    size: "Rectangular ~ 10 x 12 in",
+    size: "10 x 12 inches",
   },
   {
     id: 6,
@@ -89,7 +89,7 @@ const products = [
     description: "Customized handmade love frame crafted beautifully with photos and artistic decorations",
     image: "/products/coupl2.jpeg",
     category: "couple" as Category,
-    size: "Circular ~ 10 in Diameter",
+    size: "10 inches",
   },
   {
     id: 7,
@@ -97,7 +97,7 @@ const products = [
     description: "Customized handmade frame preserving beautiful memories with creative artistic personalized designs",
     image: "/products/couple3.jpeg",
     category: "couple" as Category,
-    size: "Rectangular ~ 9 x 12 in",
+    size: "9 x 12 inches",
   },
   {
     id: 8,
@@ -105,7 +105,7 @@ const products = [
     description: "Customized handmade quote frame expressing emotions, memories, love, and relationships",
     image: "/products/couple4.jpeg",
     category: "couple" as Category,
-    size: "Rectangular ~ 9 x 12 in",
+    size: "9 x 12 inches",
   },
 
   // Rakhis
@@ -133,7 +133,7 @@ const products = [
     description: "Elegant customized clock crafted beautifully with couple memories and floral designs",
     image: "/products/clock2.jpeg",
     category: "clocks" as Category,
-    size: "Circular ~ 12 in Diameter",
+    size: "12 inches",
   },
   {
     id: 12,
@@ -141,7 +141,7 @@ const products = [
     description: "Beautiful handmade clock designed with personalized photo memories and elegant resin art patterns",
     image: "/products/clock1.jpeg",
     category: "clocks" as Category,
-    size: "Circular ~ 10 in Diameter",
+    size: "10 inches",
   },
 
   {
@@ -150,7 +150,7 @@ const products = [
     description: "Customized handmade baby memory plate preserving precious birth memories and special moments",
     image: "/products/clock3.jpeg",
     category: "baby" as Category,
-    size: "Circular ~ 8 in Diameter",
+    size: "8 inches",
   },
 
   // Calendar Frames
@@ -160,7 +160,7 @@ const products = [
     description: "Personalized handmade calendar beautifully designed with memorable photos and special dates",
     image: "/products/calender1.jpeg",
     category: "calendars" as Category,
-    size: "Circular ~ 8 in Diameter",
+    size: "8 inches",
   },
   {
     id: 15,
@@ -168,7 +168,7 @@ const products = [
     description: "Customized birthday calendar frame preserving precious memories with elegant handmade designs",
     image: "/products/calender2.jpeg",
     category: "calendars" as Category,
-    size: "Circular ~ 8 in Diameter",
+    size: "8 inches",
   },
 
   // Baby Frames
@@ -178,7 +178,7 @@ const products = [
     description: "Customized handmade baby board preserving precious birth memories and special moments",
     image: "/products/baby1.jpeg",
     category: "baby" as Category,
-    size: "Rectangular ~ 10 x 12 in",
+    size: "10 x 12 inches",
   },
   // Birthday Gifts
   {
@@ -187,7 +187,7 @@ const products = [
     description: "Customized handmade birthday frame crafted beautifully with memorable photos and decorative designs",
     image: "/products/birthday1.jpeg",
     category: "birthday" as Category,
-    size: "Rectangular ~ 9 x 12 in",
+    size: "9 x 12 inches",
   },
 
   {
@@ -196,7 +196,7 @@ const products = [
     description: "Elegant personalized birthday resin board designed with names, wishes, and artistic decorations",
     image: "/products/birthday2.jpeg",
     category: "birthday" as Category,
-    size: "Circular ~ 8 in Diameter",
+    size: "8 inches",
   },
 
   {
@@ -205,7 +205,7 @@ const products = [
     description: "Creative birthday photo clock customized with special memories and stylish floral artwork",
     image: "/products/birthday3.jpeg",
     category: "birthday" as Category,
-    size: "Circular ~ 8 in Diameter",
+    size: "8 inches",
   },
 
   {
@@ -214,7 +214,7 @@ const products = [
     description: "Handmade birthday name plate designed with glitter resin art and customized celebration themes",
     image: "/products/birthday4.jpeg",
     category: "birthday" as Category,
-    size: "Circular ~ 10 in Diameter",
+    size: "10 inches",
   },
   // Others
   {
@@ -223,7 +223,7 @@ const products = [
     description: "Handmade decorative resin plate crafted beautifully with pearls, stones, and elegant artistic designs",
     image: "/products/design.jpeg",
     category: "others" as Category,
-    size: "Circular ~ 6 in Diameter",
+    size: "6 inches",
   },
 
   {
@@ -250,7 +250,7 @@ const products = [
     description: "Elegant personalized resin name board designed beautifully with seashells and artistic decorations",
     image: "/products/shopname.jpeg",
     category: "others" as Category,
-    size: "Circular ~ 4 in Diameter",
+    size: "4 inches",
   },
 
   {
@@ -259,7 +259,7 @@ const products = [
   description: "Luxury handmade wedding memory frame featuring invitation card, photos, names, and elegant resin artwork",
   image: "/products/marriage6.jpeg",
   category: "wedding" as Category,
-  size: "Rectangular ~ 14 x 26 in",
+  size: "14 x 26 inches",
 },
 {
   id: 30,
@@ -267,7 +267,7 @@ const products = [
   description: "Personalized wedding resin frame crafted with invitation card, memorable photos, pearls, and premium decorations",
   image: "/products/marriage7.jpeg",
   category: "wedding" as Category,
-  size: "Rectangular ~ 10 x 14 in",
+  size: "10 x 14 inches",
 },
 
   // Earrings
