@@ -254,49 +254,67 @@ const products = [
   },
 
   {
-  id: 29,
-  name: "Premium Wedding Memory Frame",
-  description: "Luxury handmade wedding memory frame featuring invitation card, photos, names, and elegant resin artwork",
-  image: "/products/marriage6.jpeg",
-  category: "wedding" as Category,
-  size: "14 x 26 inches",
+    id: 26,
+    name: "Customized Memory Frame",
+    description: "Beautiful handcrafted memory frame with personalized photos, keepsakes, and heartfelt messages—an unforgettable gift for friends and loved ones.",
+    image: "/products/brothers.jpeg",
+    category: "others" as Category,
+    size: "16 x 20 inches",
+  },
+  {
+  id: 27,
+  name: "Customized Couple Memory Frame",
+  description: "Elegant handmade personalized couple memory frame crafted with preserved flowers, pearls, custom names, photo, and special date",
+  image: "/products/couple5.jpeg",
+  category: "couple" as Category,
+  size: "10 x 12 inches",
 },
-{
-  id: 30,
-  name: "Customized Wedding Resin Frame",
-  description: "Personalized wedding resin frame crafted with invitation card, memorable photos, pearls, and premium decorations",
-  image: "/products/marriage7.jpeg",
-  category: "wedding" as Category,
-  size: "10 x 14 inches",
-},
+
+  {
+    id: 29,
+    name: "Premium Wedding Memory Frame",
+    description: "Luxury handmade wedding memory frame featuring invitation card, photos, names, and elegant resin artwork",
+    image: "/products/marriage6.jpeg",
+    category: "wedding" as Category,
+    size: "14 x 26 inches",
+  },
+
+  {
+    id: 30,
+    name: "Customized Wedding Resin Frame",
+    description: "Personalized wedding resin frame crafted with invitation card, memorable photos, pearls, and premium decorations",
+    image: "/products/marriage7.jpeg",
+    category: "wedding" as Category,
+    size: "10 x 14 inches",
+  },
 
   // Earrings
-{
-  id: 31,
-  name: "Resin Earrings",
-  description: "Elegant handmade resin earrings crafted beautifully with glitter art and premium artistic designs",
-  image: "/products/earrings.jpeg",
-  category: "earrings" as Category,
-  size: "Depends on design",
-},
+  {
+    id: 31,
+    name: "Resin Earrings",
+    description: "Elegant handmade resin earrings crafted beautifully with glitter art and premium artistic designs",
+    image: "/products/earrings.jpeg",
+    category: "earrings" as Category,
+    size: "Depends on design",
+  },
 
-// Keychains
-{
-  id: 32,
-  name: "Heart Resin Keychain",
-  description: "Handmade heart-shaped resin keychain crafted with colorful glitter and premium finish",
-  image: "/products/keychains1.jpeg",
-  category: "keychains" as Category,
-  size: "Depends on design",
-},
-{
-  id: 33,
-  name: "Customized Doll Keychain",
-  description: "Personalized handmade doll keychain with resin initial, name, and soft pom-pom decoration",
-  image: "/products/keychains2.jpeg",
-  category: "keychains" as Category,
-  size: "Depends on design",
-},
+  // Keychains
+  {
+    id: 32,
+    name: "Heart Resin Keychain",
+    description: "Handmade heart-shaped resin keychain crafted with colorful glitter and premium finish",
+    image: "/products/keychains1.jpeg",
+    category: "keychains" as Category,
+    size: "Depends on design",
+  },
+  {
+    id: 33,
+    name: "Customized Doll Keychain",
+    description: "Personalized handmade doll keychain with resin initial, name, and soft pom-pom decoration",
+    image: "/products/keychains2.jpeg",
+    category: "keychains" as Category,
+    size: "Depends on design",
+  },
 
 ]
 
